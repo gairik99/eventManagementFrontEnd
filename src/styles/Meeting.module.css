@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  background: #f1f6fa;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.contentArea {
+  flex: 1;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.headerTitle {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.headerSubtitle {
+  color: #666;
+  margin: 8px 0 0 0;
+  font-size: 14px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.cardHeader {
+  color: #1877f2;
+  padding: 1.5rem;
+  font-size: 20px;
+  text-align: center;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 0;
+}
+
+.formSection {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  margin-left: 5vw;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label {
+  min-width: 100px;
+}
+
+.input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  width: 200px;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.textarea {
+  composes: input;
+  width: 70%;
+  height: 120px;
+  resize: vertical;
+}
+
+.select {
+  composes: input;
+  width: 150px;
+  height: 36px;
+}
+
+.timeInputs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.required {
+  color: red;
+}
+.timezoneSelect {
+  width: 50%;
+  margin-left: 5px;
+}
+
+.react-timezone-select {
+  font-size: 14px;
+}
+
+.react-timezone-select__control {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  min-height: 38px;
+}
+
+.react-timezone-select__menu {
+  z-index: 1000;
+}

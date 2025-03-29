@@ -1,0 +1,16 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoImage {
+  width: 30px; /* Adjust based on your logo size */
+  height: 30px;
+}
+
+.logoText {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #2d3436;
+}

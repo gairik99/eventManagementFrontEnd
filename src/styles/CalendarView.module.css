@@ -1,0 +1,165 @@
+.calendarContainer {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.viewControls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.viewControls button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.viewControls button:hover {
+  background: #f0f0f0;
+}
+
+.viewControls button.active {
+  background: #1877f2;
+  color: white;
+  border-color: #1877f2;
+}
+
+.eventContent {
+  padding: 2px 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eventTitle {
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.rejectedLabel {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* FullCalendar overrides */
+.fc-theme-standard .fc-list-day-cushion {
+  background-color: #f5f5f5;
+}
+
+.fc-event {
+  border-radius: 4px;
+  border: none;
+}
+
+.calendarHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.searchContainer {
+  position: relative;
+  margin-bottom: 15px;
+  width: 300px;
+  margin-left: auto;
+}
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 35px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  position: relative;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #1877f2;
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+/* Adjust header toolbar layout */
+.fc-header-toolbar {
+  margin: 0 !important;
+  padding: 10px 0;
+}
+
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.calendarContainer.mobile .calendarHeader {
+  padding: 10px 0;
+}
+
+.calendarContainer.mobile .searchContainer {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.calendarContainer.mobile .searchInput {
+  padding: 6px 8px 6px 28px;
+  font-size: 14px;
+}
+
+.calendarContainer.mobile .searchIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Calendar header adjustments */
+.calendarContainer.mobile .fc-header-toolbar {
+  margin: 0.5em 0 !important;
+  padding: 0 5px;
+}
+
+.calendarContainer.mobile .fc-toolbar-title {
+  font-size: 1.1rem !important;
+  margin: 0 4px !important;
+}
+
+.calendarContainer.mobile .fc-button {
+  padding: 4px 8px !important;
+  font-size: 0.8rem !important;
+  margin: 2px !important;
+}
+
+.calendarContainer.mobile .fc-button-group .fc-button {
+  padding: 4px 6px !important;
+}
+
+.calendarContainer.mobile .fc-toolbar-chunk {
+  gap: 4px;
+}
+
+/* View selector adjustments */
+.calendarContainer.mobile .fc-dayGridMonth-button,
+.calendarContainer.mobile .fc-timeGridWeek-button {
+  font-size: 0.7rem !important;
+  padding: 3px 5px !important;
+}
+
+/* Hide unnecessary elements */
+.calendarContainer.mobile .fc-today-button {
+  display: none !important;
+}
+
+.calendarContainer.mobile .fc-timeGridDay-button,
+.calendarContainer.mobile .fc-listYear-button {
+  display: none !important;
+}

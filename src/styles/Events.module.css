@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  background: #f1f6fa;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.contentArea {
+  flex: 1;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.headerTitle {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.headerSubtitle {
+  color: #666;
+  margin: 8px 0 0 0;
+  font-size: 14px;
+}
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem 0;
+}

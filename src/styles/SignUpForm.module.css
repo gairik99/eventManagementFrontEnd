@@ -1,0 +1,138 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 70vw;
+}
+
+.form {
+  width: 30vw;
+  padding: 1rem;
+  justify-content: end;
+}
+
+.formGroup {
+  margin-bottom: 0.5rem;
+  color: #666666;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: rgb(168, 165, 165);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: rgb(5, 143, 17);
+}
+
+.heading {
+  align-self: flex-start;
+  margin-left: 15vw;
+  /* Add any other heading styles you want */
+}
+
+.logoContainer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoImage {
+  width: 40px; /* Adjust based on your logo size */
+  height: 40px;
+}
+
+.logoText {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #2d3436;
+}
+
+.checkboxGroup {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+.checkboxGroup label {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  line-height: 1.4;
+  margin-left: 0;
+}
+
+.checkboxText {
+  display: inline-block;
+  margin-bottom: 8px; /* Adjusts vertical alignment */
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.checkboxGroup input[type="checkbox"] {
+  margin-top: 3px;
+  width: 12px; /* Fine-tune alignment */
+  height: 12px; /* Fine-tune alignment */
+}
+.authHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+}
+
+.switchButton {
+  background: none;
+  border: none;
+  color: #1877f2;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  text-decoration: underline;
+}
+.errorText {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #676b5f;
+}
