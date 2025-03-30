@@ -52,6 +52,7 @@ const Bookings = () => {
             }
         } catch (error) {
             toast.error(error, "something went wrong");
+            setMeet2([]);
         }
     }
 
