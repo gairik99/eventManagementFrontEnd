@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SideBar from "../components/SideBar";
 import { useAuth } from "../context/authContext";
@@ -8,8 +9,8 @@ import styles from "../styles/Settings.module.css";
 import MobileLogout from "../components/MobileLogout";
 import MobileNavBar from "../components/MobileNavBar";
 const Settings = () => {
+    const navigate = useNavigate();
     const [isHidden, setIsHidden] = useState(window.innerWidth <= 768);
-
     useEffect(() => {
         const handleResize = () => {
             setIsHidden(window.innerWidth <= 768);
@@ -44,11 +45,8 @@ const Settings = () => {
             if (formData.password) payload.password = formData.password;
             const response = await updateUserProfile(payload, user.token);
             if (response.status == "ok") {
-                setUser((prev) => ({
-                    ...prev,
-                    name: response.user.firstName + " " + response.user.lastName,
-                    email: response.user.email,
-                }));
+                setUser({ token: '' });
+                navigate('/')
                 toast.success("profile update successfully");
             }
         } catch (err) {

@@ -77,7 +77,7 @@ const Home = () => {
             >
                 <h1 style={{ margin: "auto" }}>CNNCT – Easy</h1>
                 <h1 style={{ margin: "auto" }}>Scheduling Ahead</h1>
-                <button className={styles.navbarButton}>Sign up free</button>
+                <button className={styles.navbarButton} onClick={() => navigate('/signup')}>Sign up free</button>
                 <div style={{ height: "550px" }}>
                     <img
                         src={img1}
