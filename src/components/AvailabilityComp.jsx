@@ -27,13 +27,16 @@ const AvailabilityComp = ({ hidden }) => {
                 } : defaultDay;
             });
         }
-
         return defaultDays;
-
     });
 
+    function formatLocalDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
 
-    // console.log(days)
     function getCurrentWeekDates() {
         const dates = [];
         const today = new Date();
@@ -44,10 +47,11 @@ const AvailabilityComp = ({ hidden }) => {
         for (let i = 0; i < 7; i++) {
             const date = new Date(monday);
             date.setDate(monday.getDate() + i);
-            dates.push(date.toISOString().split('T')[0]);
+            dates.push(formatLocalDate(date));
         }
         return dates;
     }
+
     const toggleAllDay = (dayIndex) => {
         setDays(prevDays =>
             prevDays.map((day, index) =>
@@ -94,13 +98,13 @@ const AvailabilityComp = ({ hidden }) => {
             )
         );
     };
+
     const prepareAvailabilityData = () => {
         return {
             availability: days.map(day => ({
                 day: day.day,
                 date: day.date,
                 isAllDay: day.isAllDay,
-                // For "All Day", send full day slot
                 slots: day.day === 'Sunday' ? [] : day.isAllDay
                     ? [{ start: '00:00', end: '23:59' }]
                     : day.slots.map(slot => ({
@@ -116,31 +120,27 @@ const AvailabilityComp = ({ hidden }) => {
             const formData = prepareAvailabilityData();
             const response = await updateUserProfile(formData, user.token);
             console.log(response);
-            if (response.status == 'ok') {
+            if (response.status === 'ok') {
                 toast.success(response.message);
                 setUser(prev => ({
                     ...prev,
                     availability: response.user.availability
                 }));
-
             }
         } catch (error) {
             const errorMessage =
                 error.response?.data?.message || "Update failed. Please try again.";
             toast.error(errorMessage);
-
         }
-
-    }
-
-    // console.log(prepareAvailabilityData());
+    };
+    console.log(days)
     return (
         <div style={{ padding: '10px', border: '1px solid black', borderRadius: '5px', width: !hidden ? '36vw' : '96vw', background: 'white' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid black', paddingBottom: '10px' }}>
                 <h5>Activity</h5>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <h5>Time Zone</h5>
-                    <h6 style={{ color: 'blue' }}>Indian standard Time</h6>
+                    <h6 style={{ color: 'blue' }}>Indian Standard Time</h6>
                 </div>
             </div>
             {days.map((day, dayIndex) => (
@@ -178,7 +178,6 @@ const AvailabilityComp = ({ hidden }) => {
                 }}
                 onClick={handleSave}
             >
-
                 Save
             </button>
         </div>
