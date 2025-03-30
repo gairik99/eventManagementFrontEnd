@@ -46,8 +46,8 @@ const SignInForm = ({ hidden }) => {
                 email: response.user.email,
                 name: response.user.firstName + " " + response.user.lastName,
                 category: response.user.category,
-                id: response.user._id
-
+                id: response.user._id,
+                availability: response.user.availability
             }));
             // console.log(response);
 
