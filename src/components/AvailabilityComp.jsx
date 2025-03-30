@@ -18,6 +18,7 @@ const AvailabilityComp = ({ hidden }) => {
             { day: "Sunday", date: currentWeekDates[6], slots: [], isAllDay: false }
         ];
     });
+    // console.log(days)
     function getCurrentWeekDates() {
         const dates = [];
         const today = new Date();

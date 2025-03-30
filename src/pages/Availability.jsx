@@ -67,7 +67,11 @@ const Availability = () => {
                 {view == 'availability' ? <AvailabilityComp hidden={isHidden} /> : <CalendarView hidden={isHidden} />}
 
             </div>
-
+            {isHidden && (
+                <div style={{ width: "100%" }}>
+                    <MobileNavBar />
+                </div>
+            )}
         </div>
     )
 }

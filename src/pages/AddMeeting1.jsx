@@ -21,7 +21,7 @@ const AddMeeting1 = () => {
                 setMeet(selectedMeeting);
             }
         } else {
-            setMeet({});
+            setMeet({ timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, });
         }
     }, [id, meet1, setMeet]);
 
