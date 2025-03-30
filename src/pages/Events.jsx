@@ -9,7 +9,6 @@ import { useAuth } from "../context/authContext";
 import { useMyMeet } from "../context/myMeetingContext";
 import MobileNavBar from "../components/MobileNavBar";
 import MobileLogout from "../components/MobileLogout";
-
 const Events = () => {
     const navigate = useNavigate();
     const [isHidden, setIsHidden] = useState(window.innerWidth <= 768);

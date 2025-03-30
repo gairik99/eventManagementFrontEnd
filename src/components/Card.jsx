@@ -13,12 +13,14 @@ import { useGuestMeet } from "../context/guestMeetingContext";
 import { updateMeeting } from "../services/action";
 
 
+
 const Card = ({ title, date, time, duration, id, ampm, hidden, active }) => {
     const navigate = useNavigate();
     const { user } = useAuth();
     const { setMeet1 } = useMyMeet();
     const { meet2 } = useGuestMeet();
     const [hasOverlap, setHasOverlap] = useState(false);
+    console.log(meet2);
     const formatDate = (dateString) => {
         const months = [
             "January",
@@ -44,36 +46,38 @@ const Card = ({ title, date, time, duration, id, ampm, hidden, active }) => {
     };
 
     const convertTo24Hour = (time12h, ampm) => {
-        let [hours, minutes] = time12h.split(':').map(Number);
-        if (ampm === 'PM' && hours !== 12) hours += 12;
-        if (ampm === 'AM' && hours === 12) hours = 0;
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        const [hoursStr, minutesStr = '00'] = time12h.split(':');
+        const hours = parseInt(hoursStr, 10) || 0;
+        const minutes = parseInt(minutesStr, 10) || 0;
+
+        let finalHours = hours;
+        if (ampm === 'PM' && hours !== 12) finalHours += 12;
+        if (ampm === 'AM' && hours === 12) finalHours = 0;
+
+        return `${String(finalHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
     };
 
     useEffect(() => {
         const checkOverlap = () => {
             if (!meet2?.length) return false;
 
-            // Convert current meeting time to minutes
-            const currentDate = date;
-            const [currentHours, currentMinutes] = convertTo24Hour(time, ampm).split(':').map(Number);
+            // Current meeting
+            const currentTime24 = convertTo24Hour(time, ampm);
+            const [currentHours, currentMinutes] = currentTime24.split(':').map(Number);
             const currentStart = currentHours * 60 + currentMinutes;
-            const currentEnd = currentStart + duration * 60;
+            const currentEnd = currentStart + (Number(duration) || 0) * 60;
 
             return meet2.some(meeting => {
-                // Skip self
-                if (meeting._id === id) return false;
+                if (meeting.date !== date) return false;
 
-                // Check date match
-                if (meeting.date !== currentDate) return false;
-
-                // Convert other meeting time to minutes
-                const [otherHours, otherMinutes] = convertTo24Hour(meeting.time, meeting.ampm).split(':').map(Number);
+                // Compared meeting
+                const otherTime24 = convertTo24Hour(meeting.time, meeting.ampm);
+                const [otherHours, otherMinutes] = otherTime24.split(':').map(Number);
                 const otherStart = otherHours * 60 + otherMinutes;
-                const otherEnd = otherStart + meeting.duration * 60;
+                const otherEnd = otherStart + (Number(meeting.duration) || 0) * 60;
 
-                // Check time overlap
-                return (currentStart < otherEnd && currentEnd > otherStart);
+                // Overlap check
+                return currentStart < otherEnd && currentEnd > otherStart;
             });
         };
 
@@ -146,17 +150,20 @@ const Card = ({ title, date, time, duration, id, ampm, hidden, active }) => {
             toast.error("Failed to copy link: ", err);
         });
     }
-
+    // console.log(hasOverlap)
     return (
         <div
             className={styles.card}
             style={{ borderTop: !active ? "10px solid rgb(97, 99, 99)" : "", width: hidden ? "332px" : "" }}
         >
-            {hasOverlap && (
-                <div className={styles.warningBadge}>
-                    ⚠️ Time conflict with another meeting
-                </div>
-            )}
+
+            {
+                hasOverlap &&
+                <p className={styles.warning}>
+                    ⚠️ Time conflict of timing
+                </p>
+            }
+
             <div className={`${styles.cardRow} ${styles.row1}`}>
                 <span className={styles.cardText}>{title}</span>
                 <button

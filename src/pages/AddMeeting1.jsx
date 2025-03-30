@@ -13,7 +13,7 @@ const AddMeeting1 = () => {
     const { id } = useParams();
     const { meet, setMeet } = useMeet();
     const { meet1 } = useMyMeet();
-    console.log(meet)
+    // console.log(meet)
     useEffect(() => {
         if (id) {
             const selectedMeeting = meet1.find((m) => m._id === id);
