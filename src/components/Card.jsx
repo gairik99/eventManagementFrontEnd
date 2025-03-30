@@ -160,7 +160,7 @@ const Card = ({ title, date, time, duration, id, ampm, hidden, active }) => {
             {
                 hasOverlap &&
                 <p className={styles.warning}>
-                    ⚠️ Time conflict of timing
+                    ⚠️Conflict of timing
                 </p>
             }
 

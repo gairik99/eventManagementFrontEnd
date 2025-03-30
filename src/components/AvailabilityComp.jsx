@@ -8,7 +8,7 @@ const AvailabilityComp = ({ hidden }) => {
     const { user, setUser } = useAuth();
     const [days, setDays] = useState(() => {
         const currentWeekDates = getCurrentWeekDates();
-        return [
+        const defaultDays = [
             { day: "Monday", date: currentWeekDates[0], slots: [], isAllDay: false },
             { day: "Tuesday", date: currentWeekDates[1], slots: [], isAllDay: false },
             { day: "Wednesday", date: currentWeekDates[2], slots: [], isAllDay: false },
@@ -17,7 +17,22 @@ const AvailabilityComp = ({ hidden }) => {
             { day: "Saturday", date: currentWeekDates[5], slots: [], isAllDay: false },
             { day: "Sunday", date: currentWeekDates[6], slots: [], isAllDay: false }
         ];
+        if (user?.availability) {
+            return defaultDays.map(defaultDay => {
+                const savedDay = user.availability.find(d => d.day === defaultDay.day);
+                return savedDay ? {
+                    ...defaultDay,
+                    isAllDay: savedDay.isAllDay,
+                    slots: savedDay.slots
+                } : defaultDay;
+            });
+        }
+
+        return defaultDays;
+
     });
+
+
     // console.log(days)
     function getCurrentWeekDates() {
         const dates = [];
@@ -96,7 +111,6 @@ const AvailabilityComp = ({ hidden }) => {
         };
     };
 
-
     const handleSave = async () => {
         try {
             const formData = prepareAvailabilityData();
@@ -110,8 +124,6 @@ const AvailabilityComp = ({ hidden }) => {
                 }));
 
             }
-
-
         } catch (error) {
             const errorMessage =
                 error.response?.data?.message || "Update failed. Please try again.";

@@ -54,7 +54,7 @@ const CalendarView = ({ hidden }) => {
         const endTime = moment(eventInfo.event.end).format('h:mm A');
 
         return (
-            <div className={styles.eventContent} style={{ backgroundColor: eventInfo.event.backgroundColor }}>
+            <div className={styles.eventContent} style={{ backgroundColor: eventInfo.event.backgroundColor, color: 'white' }}>
                 <div className={styles.eventTime}>
                     {startTime} - {endTime}
                 </div>
@@ -68,16 +68,25 @@ const CalendarView = ({ hidden }) => {
     return (
         <div className={`${styles.calendarContainer} ${hidden ? styles.mobile : ''}`}>
             <div className={styles.calendarHeader}>
-                <div className={styles.searchContainer}>
-                    <CiSearch className={styles.searchIcon} />
-                    <input
-                        type="text"
-                        placeholder="Search events..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className={styles.searchInput}
-                        style={{ marginTop: '0px' }}
-                    />
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    {!hidden && <div style={{ display: 'flex', gap: '4rem', }}>
+                        <p style={{ fontWeight: '600' }}>Activity</p>
+                        <div style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
+                            <p style={{ fontWeight: '600' }}>Time Zone</p>
+                            <p style={{ color: 'blue' }}>Indian Time Standard</p>
+                        </div>
+                    </div>}
+                    <div className={styles.searchContainer}>
+                        <CiSearch className={styles.searchIcon} />
+                        <input
+                            type="text"
+                            placeholder="Search events..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className={styles.searchInput}
+                            style={{ marginTop: '0px' }}
+                        />
+                    </div>
                 </div>
                 <FullCalendar
                     plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
