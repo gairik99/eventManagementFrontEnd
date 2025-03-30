@@ -16,6 +16,7 @@ import img7 from "../assets/AutoLayoutHorizontal6.png";
 import img8 from "../assets/AutoLayoutHorizontal7.png";
 import img9 from "../assets/AutoLayoutHorizontal8.png";
 import footerImg from "../assets/footerImg.png";
+import img32 from "../assets/fantastical.png"
 const Home = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
@@ -135,15 +136,16 @@ const Home = () => {
                         </li>
                     </ul>
                 </div>
-                <div style={{ width: isHidden ? "100vw" : "40vw", height: "60vh" }}>
-                    <img src={img3} style={{ width: "90%", height: "100%" }} />
+                <div style={{ width: isHidden ? "96vw" : "40vw", height: "60vh", position: 'relative' }}>
+                    <img src={img3} style={{ width: "100%", height: isHidden ? "80%" : '100%', position: 'absolute', top: '20px', right: '0px' }} alt='img1' />
+                    <img src={img32} style={{ width: "100%", height: isHidden ? "80%" : '100%', position: 'absolute', top: '0px', left: '-40px' }} alt='img2' />
                 </div>
             </div>
             <div
                 style={{
                     display: "flex",
                     width: isHidden ? "100vw" : "80%",
-                    marginTop: "10rem",
+                    marginTop: "2rem",
                     marginLeft: !isHidden ? "4rem" : "",
                     flexDirection: isHidden ? "column" : "row",
                     height: "20vh",
