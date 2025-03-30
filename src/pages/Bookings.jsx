@@ -26,6 +26,7 @@ const Bookings = () => {
                 setMeet2(newdata.meetings);
             } catch (error) {
                 toast.error(error, "something went wrong");
+                setMeet2([]);
             }
         };
         fetchLinks();
@@ -146,10 +147,6 @@ const Bookings = () => {
         setShowDialog(true);
         // console.log('People clicked:', meeting);
     };
-    // const filterOtherGuests = (guests, userId) => {
-    //     return guests.filter(g => g.user !== userId);
-    // };
-    // console.log(selected)
     return (
         <div className={styles.container} style={{ flexDirection: isHidden ? "column" : "" }}>
             {!isHidden && <SideBar />}

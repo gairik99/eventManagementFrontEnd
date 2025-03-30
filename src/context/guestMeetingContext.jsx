@@ -5,10 +5,10 @@ const GuestMeetingContext = createContext();
 const GuestMeetProvider = ({ children }) => {
     const getInitialUser = () => {
         try {
-            return JSON.parse(localStorage.getItem("meet2")) || {};
+            return JSON.parse(localStorage.getItem("meet2")) || [];
         } catch (error) {
             console.error("Error parsing user data from localStorage:", error);
-            return {};
+            return [];
         }
     };
 
