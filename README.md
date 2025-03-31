@@ -1,12 +1,74 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#  A Meeting Management Application
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a meeting management application built using React.js (vite) that allows users to create a personalized landing page with multiple links to their social media, websites, and other online resources.
 
-## Expanding the ESLint configuration
+## 🛠 Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-   Userfriendly interface to manage meeting.
+    
+-   Support for major meeting scheduling application, like google meet, microsoft teams
+    
+-   share meeting links
+  
+-   real time conflict detection
+
+-   calander view of meetings
+
+-   availablity scheduling
+ 
+-   Responsive design for seamless mobile and desktop experience.
+   
+-   Analytics tracking for link clicks.
+    
+
+## Tech Stack
+
+-   **Frontend:** React.js
+    
+-   **Backend (Optional):** Node.js, Express.js
+    
+-   **Database:** MongoDB
+    
+
+##  Project Structure
+
+```
+SPARK/
+│── public/
+│── src/
+│   │── components/
+|   │── styles/
+|   │── context/
+|   │── services/
+|   │── utils/
+│   │── pages/
+│   ├── App.js
+│   ├── index.js
+|  
+│── .gitignore
+│── package.json
+│── README.md
+```
+
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+-   Node.js (>=18.x)
+    
+-   npm or yarn
+
+-   npm install
+    
+### Running the Project
+
+```
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
