@@ -143,7 +143,7 @@ const Card = ({ title, date, time, duration, id, ampm, hidden, active }) => {
         }
     };
     const handleCopyClick = (id) => {
-        const url = `http://localhost:5173/copymeeting/${id}`;
+        const url = `https://eventgairik.netlify.app/copymeeting/${id}`;
         navigator.clipboard.writeText(url).then(() => {
             toast.success("Meeting link copied to clipboard!");
         }).catch(err => {
