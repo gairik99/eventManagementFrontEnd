@@ -10,9 +10,9 @@ import Settings from './pages/Settings'
 import AddMeeting1 from './pages/AddMeeting1'
 import AddMeeting2 from './pages/AddMeeting2'
 import CopyMeeting from './pages/CopyMeeting'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
-
 
   return (
     <>
@@ -20,15 +20,15 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/signin' element={<SignInPage />} />
-        <Route path='/usernameupdate' element={<UserNameUpdatePage />} />
-        <Route path='/events' element={<Events />} />
-        <Route path='/bookings' element={<Bookings />} />
-        <Route path='/availability' element={<Availability />} />
-        <Route path='/settings' element={<Settings />} />
-        <Route path='/addmeeting1' element={<AddMeeting1 />} />
-        <Route path='/addmeeting1/:id' element={<AddMeeting1 />} />
-        <Route path='/addmeeting2' element={<AddMeeting2 />} />
-        <Route path='/addmeeting2/:id' element={<AddMeeting2 />} />
+        <Route path='/usernameupdate' element={<ProtectedRoute><UserNameUpdatePage /></ProtectedRoute>} />
+        <Route path='/events' element={<ProtectedRoute><Events /></ProtectedRoute>} />
+        <Route path='/bookings' element={<ProtectedRoute><Bookings /></ProtectedRoute>} />
+        <Route path='/availability' element={<ProtectedRoute> <Availability /></ProtectedRoute>} />
+        <Route path='/settings' element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+        <Route path='/addmeeting1' element={<ProtectedRoute><AddMeeting1 /></ProtectedRoute>} />
+        <Route path='/addmeeting1/:id' element={<ProtectedRoute><AddMeeting1 /></ProtectedRoute>} />
+        <Route path='/addmeeting2' element={<ProtectedRoute><AddMeeting2 /></ProtectedRoute>} />
+        <Route path='/addmeeting2/:id' element={<ProtectedRoute><AddMeeting2 /></ProtectedRoute>} />
         <Route path='/copymeeting/:id' element={<CopyMeeting />} />
       </Routes>
     </>
