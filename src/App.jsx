@@ -11,6 +11,7 @@ import AddMeeting1 from './pages/AddMeeting1'
 import AddMeeting2 from './pages/AddMeeting2'
 import CopyMeeting from './pages/CopyMeeting'
 import ProtectedRoute from './components/ProtectedRoute'
+import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/addmeeting2' element={<ProtectedRoute><AddMeeting2 /></ProtectedRoute>} />
         <Route path='/addmeeting2/:id' element={<ProtectedRoute><AddMeeting2 /></ProtectedRoute>} />
         <Route path='/copymeeting/:id' element={<CopyMeeting />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </>
   )
